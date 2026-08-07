@@ -1,0 +1,56 @@
+name: Deploy
+
+# Builds with the repo's own toolchain and uploads the result, rather than
+# letting Static Web Apps' Oryx builder infer how to build the site. Oryx does
+# not reliably handle pnpm 10 with a frozen lockfile, and an inferred build is a
+# second, invisible build definition that can drift from CI. This way the
+# artifact that ships is produced by the same commands CI already verified.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never let two deploys race. Unlike CI, in-progress runs are allowed to finish:
+# cancelling a half-finished upload is a worse outcome than a slightly stale one.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://overcut.racing
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: dist
+          skip_app_build: true
+          skip_api_build: true
