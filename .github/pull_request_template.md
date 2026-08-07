@@ -17,7 +17,6 @@
 - [ ] `pnpm check` passes locally
 - [ ] `pnpm build` succeeds
 - [ ] No secrets, tokens, or `.env` contents committed
-- [ ] Nothing here is reveal material that should not be public yet
 - [ ] No car imagery (the current vehicle is Epic's placeholder and is not ours)
 - [ ] Copy does not invent details about how the game plays
 - [ ] Keyboard reachable, visible focus, sensible heading order, `alt` text present

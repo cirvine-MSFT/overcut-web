@@ -11,10 +11,10 @@ applies to a site that builds in forty seconds.
 
 1. **Always open a pull request. Never push directly to `master`.**
 2. **Assume everything you commit is public and permanent.** This repository is
-   public. Branches are public too. Concept art, launch copy, and trailer work
-   are visible the moment they land, so do not commit anything intended as a
-   reveal until it is meant to be seen. Making a repository private later does
-   not un-publish anything.
+   public, branches included, and making a repository private later does not
+   un-publish anything. This is stated as a fact rather than a restriction —
+   Overcut is free-to-play and there is nothing here being staged for a reveal.
+   If that ever changes, this is the line that has to change with it.
 3. **CI must pass.** `pnpm check` locally is the same thing CI runs.
 4. **Explain reasoning in the pull-request body**, not just the change. Casey is
    new to game development; the *why* is part of the deliverable.
