@@ -1,0 +1,50 @@
+---
+import Hero from '../components/Hero.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Overcut™ — a collisionless competitive racer';
+const description =
+	'A serious, collisionless competitive racer where precise driving wins races and strategy determines who can sustain it. In development.';
+---
+
+<BaseLayout title={title} description={description} path="/">
+	<main>
+		<Hero />
+
+		<div class="mx-auto w-full max-w-5xl px-6 sm:px-8">
+			<section class="border-b border-line py-(--spacing-section)" aria-labelledby="what-it-is">
+				<SectionLabel id="what-it-is" text="What it is" />
+
+				<div class="mt-8 max-w-[62ch] space-y-6 text-lg leading-relaxed text-fg sm:text-xl">
+					<p>
+						Overcut is a circuit racer. Cars never collide with one another, so a race
+						is decided by where you place your car and how well you carry speed rather
+						than by contact. Every car performs identically, which makes a lap time a
+						statement about the driver and not about the garage.
+					</p>
+					<p>
+						It is played only from inside the car. Abilities are part of it, and they
+						only ever help you or a teammate — nothing in Overcut is used to hinder a
+						rival. Exactly what those abilities do is still being designed, and this
+						page is not going to pretend otherwise.
+					</p>
+				</div>
+			</section>
+
+			<section class="py-(--spacing-section)" aria-labelledby="status">
+				<SectionLabel id="status" text="Status" />
+
+				<p class="mt-8 max-w-[62ch] text-lg leading-relaxed text-fg sm:text-xl">
+					Overcut is in development. Development writing lives at <a
+						class="text-accent-soft underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-fg"
+						href="https://caseyirvine.dev">caseyirvine.dev</a
+					>.
+				</p>
+			</section>
+		</div>
+	</main>
+
+	<SiteFooter />
+</BaseLayout>

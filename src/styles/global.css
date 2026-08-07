@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. This block is the single source of truth for colour, type and
+ * spacing in the site. Components reference these through Tailwind utilities
+ * (`bg-ink`, `text-fg-muted`, `font-display`, …) and never hard-code a value.
+ */
+@theme {
+	/* Surfaces, from furthest back to nearest. */
+	--color-ink: #08090b;
+	--color-surface: #101318;
+	--color-line: #262b33;
+
+	/* Foreground. `fg-muted` is the lowest-contrast text used anywhere and is
+	   still ~8.5:1 on `ink`, comfortably past WCAG AA. */
+	--color-fg: #f5f7fa;
+	--color-fg-muted: #9aa4b2;
+
+	/* One signal colour, used sparingly. `accent` is for large type and
+	   non-text marks; `accent-soft` is the tint used wherever small text must
+	   still clear AA against `ink`. */
+	--color-accent: #ff5c2b;
+	--color-accent-soft: #ff8a5c;
+
+	/* Type. System stacks only — no webfont, no layout shift, no extra
+	   requests. */
+	--font-display:
+		"Helvetica Neue", "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+	/* Fluid size for the wordmark. Clamped so the mark never overflows at
+	   360px and never becomes absurd on a wide monitor. */
+	--text-wordmark: clamp(3rem, 13vw, 10.5rem);
+
+	/* Rhythm. Section padding is the only bespoke spacing step. */
+	--spacing-section: clamp(3rem, 8vw, 7rem);
+}
+
+@layer base {
+	html {
+		background-color: var(--color-ink);
+		color-scheme: dark;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		background-color: var(--color-ink);
+		color: var(--color-fg);
+		font-family: var(--font-sans);
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/* A single, unmistakable focus treatment for every interactive element. */
+	:focus-visible {
+		outline: 2px solid var(--color-accent-soft);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	::selection {
+		background-color: var(--color-accent);
+		color: var(--color-ink);
+	}
+}
+
+/*
+ * Motion here is decorative — a slow drift on the hero wash. Anyone who has
+ * asked their system for less motion gets none of it.
+ */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

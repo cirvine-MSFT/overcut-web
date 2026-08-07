@@ -1,0 +1,12 @@
+# Normalise line endings in the repository to LF. Biome's formatter checks for
+# LF, so a Windows checkout that committed CRLF would fail CI on Linux.
+* text=auto eol=lf
+
+# Binary files that must never be normalised.
+*.png binary
+*.jpg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

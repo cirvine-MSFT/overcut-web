@@ -1,0 +1,30 @@
+---
+/** The small mono label that opens each section. Matches the hero eyebrow. */
+interface Props {
+	id: string;
+	text: string;
+}
+
+const { id, text } = Astro.props;
+---
+
+<h2 id={id} class="section-label flex items-center gap-3 text-xs text-fg-muted uppercase sm:text-sm">
+	<span class="section-label__tick" aria-hidden="true"></span>
+	{text}
+</h2>
+
+<style>
+	.section-label {
+		font-family: var(--font-mono);
+		font-weight: 400;
+		letter-spacing: 0.32em;
+	}
+
+	.section-label__tick {
+		display: block;
+		width: 1.75rem;
+		height: 2px;
+		flex: none;
+		background-color: var(--color-accent);
+	}
+</style>
