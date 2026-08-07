@@ -1,0 +1,39 @@
+Overcut
+
+Copyright (c) 2026 Casey Irvine. All rights reserved.
+
+This repository contains the website for Overcut. Its contents — including but
+not limited to source code, configuration, styles, copy, images, and design
+assets — are the proprietary work of the copyright holder.
+
+No licence is granted. This is not open-source software. This repository is
+public, and is published as SOURCE-AVAILABLE, for reading, study, and discussion
+only. Being able to read it does not grant permission to use, copy, modify,
+merge, publish, distribute, sublicense, sell, or create derivative works from
+any part of it. GitHub's Terms of Service permit other GitHub users to view and
+fork a public repository through GitHub itself; that platform mechanism is not,
+and must not be read as, a licence from the copyright holder to any of the uses
+reserved above.
+
+
+WHAT THIS DOES NOT COVER
+
+  Ideas, mechanics, and rules. Copyright protects the expression of a work, not
+  the ideas, procedures, systems, or methods of operation within it. Overcut's
+  design concepts are not claimed as exclusive property and are discussed in
+  public deliberately. What is reserved is this particular expression of them.
+
+  Third-party components. Any third-party code, assets, or fonts in this
+  repository remain under their own licences.
+
+  Contributions. This project does not accept external contributions. See
+  CONTRIBUTING.md. Unlicensed contributions would fragment the copyright in this
+  work.
+
+
+"Overcut" is used as an unregistered trademark for this project.
+
+Reasoning for this posture, and the conditions under which it would change, is
+recorded in the game repository:
+docs/decisions/0030-licensing-and-public-disclosure.md
+docs/decisions/0035-the-website-is-not-in-this-repository.md
