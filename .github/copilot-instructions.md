@@ -13,9 +13,12 @@ here is immediately visible to anyone, including on branches, and making a
 repository private later does not un-publish what has already been seen. Treat
 every commit as permanent publication.
 
-That is fine for site code, which is HTML, CSS, and build configuration. It is
-not fine for reveal material. Do not commit concept art, launch dates, trailers,
-or unannounced feature copy until they are meant to be public.
+That is fine, and it is fine deliberately. A static site's source is HTML, CSS,
+and build configuration, Overcut is free-to-play, and nothing here is being held
+back for a reveal. There is no embargo to work around — build in the open.
+
+What *is* off-limits is unrelated to secrecy: never commit secrets, and never
+publish anything that is not ours to publish. See the image rule below.
 
 ## Stack
 
