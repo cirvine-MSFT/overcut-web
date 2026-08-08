@@ -1,11 +1,13 @@
 ---
+import Wordmark from './Wordmark.astro';
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
 	<div class="shell footer-grid">
 		<div>
-			<p class="footer-brand">Overcut<sup>&trade;</sup></p>
+			<p class="footer-brand"><Wordmark size="footer" /></p>
 			<p>A playable racing concept in development.</p>
 		</div>
 
@@ -43,19 +45,7 @@ const year = new Date().getFullYear();
 	}
 
 	.footer-brand {
-		color: var(--color-paper);
-		font-family: var(--font-display);
-		font-size: 1.8rem;
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-	}
-
-	.footer-brand sup {
-		margin-left: 0.12em;
-		color: var(--color-acid);
-		font-size: 0.3em;
-		vertical-align: 1.7em;
+		line-height: 1;
 	}
 
 	.footer-legal {

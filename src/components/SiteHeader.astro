@@ -1,9 +1,12 @@
+---
+import Wordmark from './Wordmark.astro';
+---
+
 <header class="site-header">
 	<a class="skip-link" href="#main-content">Skip to content</a>
 	<div class="shell header-inner">
 		<a class="brand" href="#top" aria-label="Overcut, back to top">
-			<span class="brand-mark" aria-hidden="true">O</span>
-			<span>Overcut<sup>&trade;</sup></span>
+			<Wordmark />
 		</a>
 
 		<nav aria-label="Primary navigation">
@@ -59,45 +62,11 @@
 		display: inline-flex;
 		flex: none;
 		align-items: center;
-		gap: 0.7rem;
-		color: var(--color-paper);
-		font-family: var(--font-display);
-		font-size: 1.35rem;
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		line-height: 1;
 		text-decoration: none;
-		text-transform: uppercase;
 	}
 
 	.brand:hover {
-		color: var(--color-acid);
-	}
-
-	.brand sup {
-		margin-left: 0.12em;
-		color: var(--color-acid);
-		font-size: 0.38em;
-		vertical-align: 1.25em;
-	}
-
-	.brand-mark {
-		display: grid;
-		width: 1.75rem;
-		height: 1.75rem;
-		place-items: center;
-		border: 2px solid var(--color-acid);
-		border-radius: 50%;
-		color: var(--color-acid);
-		font-size: 0;
-	}
-
-	.brand-mark::after {
-		width: 2.1rem;
-		height: 2px;
-		background: var(--color-magenta);
-		content: "";
-		transform: rotate(-14deg);
+		filter: brightness(1.2);
 	}
 
 	.nav-list {

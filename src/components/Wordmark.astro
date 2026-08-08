@@ -1,0 +1,86 @@
+---
+interface Props {
+	size?: 'header' | 'hero' | 'footer';
+}
+
+const { size = 'header' } = Astro.props;
+---
+
+<span class:list={['wordmark', `wordmark-${size}`]} aria-label="Overcut trademark">
+	<span class="wordmark-slick" aria-hidden="true">
+		<span class="wordmark-rim"></span>
+	</span>
+	<span aria-hidden="true">vercut</span>
+	<sup aria-hidden="true">&trade;</sup>
+</span>
+
+<style>
+	.wordmark {
+		display: inline-flex;
+		align-items: center;
+		color: var(--wordmark-color, var(--color-paper));
+		font-family: var(--font-display);
+		font-size: var(--wordmark-size);
+		font-weight: 700;
+		letter-spacing: var(--wordmark-tracking, 0.035em);
+		line-height: 0.8;
+		text-transform: uppercase;
+	}
+
+	.wordmark-header {
+		--wordmark-size: 1.5rem;
+		--slick-size: 1.08em;
+	}
+
+	.wordmark-hero {
+		--wordmark-color: var(--color-acid);
+		--wordmark-size: clamp(2rem, 4vw, 3.15rem);
+		--wordmark-tracking: 0.04em;
+		--slick-size: 0.96em;
+	}
+
+	.wordmark-footer {
+		--wordmark-size: 1.8rem;
+		--slick-size: 1em;
+	}
+
+	.wordmark-slick {
+		position: relative;
+		display: inline-grid;
+		width: var(--slick-size);
+		height: var(--slick-size);
+		flex: none;
+		place-items: center;
+		margin-right: 0.03em;
+		border: 0.14em solid var(--color-night);
+		border-radius: 50%;
+		background: var(--color-tarmac);
+		box-shadow:
+			0 0 0 0.035em color-mix(in oklab, var(--color-paper) 35%, transparent),
+			inset 0.08em 0 0 color-mix(in oklab, var(--color-paper) 12%, transparent);
+	}
+
+	.wordmark-rim {
+		display: block;
+		width: 70%;
+		height: 70%;
+		border: 0.11em solid var(--color-acid);
+		border-radius: 50%;
+		background: var(--color-night);
+		box-shadow: inset 0 0 0 0.06em var(--color-tarmac);
+	}
+
+	.wordmark sup {
+		margin-left: 0.12em;
+		color: var(--color-acid);
+		font-size: 0.24em;
+		font-weight: 600;
+		letter-spacing: 0;
+		align-self: flex-start;
+		transform: translateY(-0.28em);
+	}
+
+	.wordmark-hero sup {
+		color: var(--color-acid);
+	}
+</style>

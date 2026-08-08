@@ -75,8 +75,11 @@ Open Font License texts.
 
 ## Components and interaction
 
-- **Header:** Solid night surface, compact wordmark, cut-circle mark, and acid journal
-  link. No decorative glass or blur.
+- **Wordmark:** The `O` is a racing slick: a dark outer tire around a large acid-green
+  rim. The slick is part of the word, not a separate symbol, and no diagonal cut crosses
+  it.
+- **Header:** Solid night surface, compact wordmark, and acid journal link. No
+  decorative glass or blur.
 - **Hero:** Live text over a deliberately text-safe image. The car remains on the right;
   copy occupies the low-detail left field.
 - **Principle bands:** Full-width editorial statements separated by fine signal-color

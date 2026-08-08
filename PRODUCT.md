@@ -22,10 +22,10 @@ Visitors should understand the concept on this site, then follow the development
 Overcut is a playable concept for a competitive circuit racer with serious driving
 fundamentals, equal machinery, team strategy, and no collisions between player cars.
 
-The project tests whether a challenging racing game can remove common sources of
-frustration and setup overhead while making teamwork and strategic choices central. It is
-the game its creator wishes existed: serious enough to reward driving skill, but easier to
-return to than a full simulation.
+The project tests whether a challenging racing game can keep the serious fundamentals of
+sim racing while using lighter rules to make teamwork, strategy, and fun central. It is
+the game its creator wishes existed: demanding behind the wheel without trying to
+recreate every burden of the most uncompromising simulations.
 
 ## Positioning
 
@@ -67,6 +67,8 @@ accounts, leaderboards, a mailing list, or release dates.
 ## Brand Commitments
 
 - Use `Overcut™` on the first prominent use on a page.
+- The Overcut wordmark uses its `O` as a racing slick: a dark tire surrounding a large
+  acid-green rim. It does not use a separate cut-circle symbol.
 - The visual identity is a futuristic sci-fi circuit racer with a 1985–1993 retro-cool
   register rendered in modern materials. It uses the era's confidence without synthwave
   artifacts.
@@ -81,8 +83,8 @@ accounts, leaderboards, a mailing list, or release dates.
 
 - Accepted bespoke concept art exists for the Overcut car, livery grid, drivers, and
   Aldermoor circuit setting in the private visual-identity work.
-- A new public-marketing hero will be generated with Azure `gpt-image-2` and transferred
-  intentionally into this public repository with sanitized prompt provenance.
+- The public-marketing hero and supporting art were generated with Azure `gpt-image-2`
+  and transferred intentionally into this public repository with sanitized provenance.
 - Development writing is published at <https://caseyirvine.dev>.
 - No gameplay footage, release date, testimonials, player counts, performance benchmarks,
   or finalized ability specifications are available and none may be fabricated.
