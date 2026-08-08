@@ -99,9 +99,9 @@ accounts, leaderboards, a mailing list, or release dates.
    in service of a shared team result.
 4. **Be candid about the experiment.** Overcut is a playable concept in development, and
    unsettled systems should remain visibly unsettled.
-5. **Build for more people.** The project intends to represent a broad range of people
-   while acknowledging that representation is a commitment to pursue, not a completed
-   claim.
+5. **Build for more people.** Representation is a core commitment from the beginning.
+   The project will make mistakes and will not always get it right, so listening,
+   correcting, and continuing the work matter more than claiming completion.
 
 ## Accessibility & Inclusion
 
@@ -113,7 +113,10 @@ accounts, leaderboards, a mailing list, or release dates.
   information is already present in nearby text.
 - Treat representative casting as an explicit project goal while avoiding claims that
   the concept has already achieved comprehensive representation.
-- The game will remain free to play and unmonetized while it uses AI-generated artwork.
-  The website must disclose that use clearly and explain that AI art helps a solo
-  programmer develop the concept; the disclosure should not be framed as the product's
-  main subject.
+- The work of human artists has value. AI-generated concept art helps a solo programmer
+  develop the concept but is not presented as a substitute for that work.
+- While any AI-generated artwork remains, neither the artwork nor the game will be
+  monetized. If Overcut ever becomes commercial, its AI-generated artwork must first be
+  replaced with work created by people.
+- The website must disclose AI use clearly without framing that disclosure as the
+  product's main subject.
