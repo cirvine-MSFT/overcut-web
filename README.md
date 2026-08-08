@@ -1,4 +1,4 @@
-# Overcut — website
+# Overcut - website
 
 The website for **Overcut**™, a serious, collisionless competitive circuit racer
 where precise driving wins races and strategy determines who can sustain it.
@@ -22,12 +22,9 @@ It is **not** a devlog. Development writing goes to `caseyirvine.dev`.
 
 ## Status
 
-Pre-launch. The site is a placeholder until concept art exists.
-
-There is deliberately **no car imagery yet**. The only vehicle currently in the
-game is Epic's placeholder from the Unreal Engine templates; it is scheduled for
-deletion, it is not ours to publish, and a racing game whose hero image is
-somebody else's car is a weak first impression.
+Pre-launch. The site introduces the playable concept using bespoke Overcut concept
+art. It does not use Epic's Unreal Engine template vehicle or present concept art
+as gameplay footage.
 
 ## Roadmap
 
@@ -52,6 +49,12 @@ and why .NET Aspire is deliberately not adopted yet.
 | Lint + format | Biome |
 | Runtime | Node 22 LTS, pnpm |
 | Hosting | Azure Static Web Apps (free tier) |
+
+## Artwork
+
+Published images are bespoke, AI-generated Overcut concept art rather than gameplay
+screenshots. [`ARTWORK.md`](ARTWORK.md) records the public-safe provenance and derivative
+handling.
 
 ## Local development
 

@@ -1,55 +1,662 @@
 ---
 import Hero from '../components/Hero.astro';
-import SectionLabel from '../components/SectionLabel.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Overcut™ — a collisionless competitive racer';
+const title = 'Overcut™ — serious driving, shared strategy';
 const description =
-	'A serious, collisionless competitive racer where precise driving wins races and strategy determines who can sustain it. In development.';
+	'A collisionless competitive circuit racer with equal cars, distinct driver abilities, and team-first strategy. A playable concept in development.';
+
+const principles = [
+	{
+		name: 'No contact',
+		statement: 'Your race is yours.',
+		copy: 'Player cars never collide. Another driver cannot erase your race with one missed braking point.',
+		className: 'principle-acid',
+	},
+	{
+		name: 'Equal cars',
+		statement: 'No setup advantage.',
+		copy: 'Every car performs identically. Liveries change identity, not the machinery underneath.',
+		className: 'principle-cyan',
+	},
+	{
+		name: 'Team result',
+		statement: 'Finish together.',
+		copy: 'Individual places still matter, but the team competes to leave the race with the most points.',
+		className: 'principle-violet',
+	},
+];
+
+const consequences = [
+	['Brake too late', 'Lose the corner.'],
+	['Overwork the tires', 'Lose the stint.'],
+	['Miss the pit box', 'Lose time.'],
+	['Hit the barrier', 'Rejoin the fight.'],
+];
 ---
 
 <BaseLayout title={title} description={description} path="/">
-	<main>
+	<!--
+		THESIS: Serious racing can remove contact and setup inequality without removing consequence.
+		OWN-WORLD: Aldermoor race-programme typography, blue night surfaces, acid series signals,
+		photoreal hardware, and painted people; never synthwave.
+		STORY: Understand the fair-competition concept, see how abilities create team strategy, and
+		follow the build.
+		FIRST VIEWPORT: Text-safe circuit hero, car right, emphatic promise left, build action visible.
+		FORM: Long-form race programme; editorial sections alternate with trackside principle bands.
+	-->
+	<SiteHeader />
+
+	<main id="main-content">
 		<Hero />
 
-		<div class="mx-auto w-full max-w-5xl px-6 sm:px-8">
-			<section class="border-b border-line py-(--spacing-section)" aria-labelledby="what-it-is">
-				<SectionLabel id="what-it-is" text="What it is" />
+		<section id="concept" class="concept section-shell" aria-labelledby="concept-title">
+			<div class="concept-title">
+				<h2 id="concept-title" class="display-heading">Keep the race. Cut the collision.</h2>
+			</div>
+			<div class="concept-copy body-copy">
+				<p>
+					Overcut starts with serious racing fundamentals: learn the circuit, manage the
+					car, execute the stop, and find speed where someone else cannot.
+				</p>
+				<p>
+					Then it makes deliberate tradeoffs. <strong>Player cars cannot collide.</strong>{' '}
+					Every driver gets equal-performance machinery. A mistake costs time, but another
+					driver's mistake does not get to decide whether your race continues.
+				</p>
+				<p>
+					The result is not a softer race. It is a race that asks more useful questions:
+					how well can you drive, what strategy can your team execute, and what can you
+					still contribute when the perfect result is gone?
+				</p>
+			</div>
+		</section>
 
-				<div class="mt-8 max-w-[62ch] space-y-6 text-lg leading-relaxed text-fg sm:text-xl">
+		<section class="principles" aria-label="Overcut's three competitive principles">
+			{principles.map((principle) => (
+				<article class:list={['principle', principle.className]}>
+					<div class="shell principle-inner">
+						<p class="principle-name">{principle.name}</p>
+						<h2>{principle.statement}</h2>
+						<p>{principle.copy}</p>
+					</div>
+				</article>
+			))}
+		</section>
+
+		<section id="abilities" class="abilities" aria-labelledby="abilities-title">
+			<div class="abilities-art">
+				<img
+					src="/images/overcut-drivers.webp"
+					alt="Painted concept art of a group of Overcut drivers in distinct racing suits"
+					width="1536"
+					height="1024"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+
+			<div class="section-shell abilities-layout">
+				<div class="abilities-content">
+					<h2 id="abilities-title" class="display-heading">
+						Drivers bring more than a racing line.
+					</h2>
+
+					<div class="body-copy">
+						<p>
+							Like the agents in VALORANT, Overcut's drivers are defined in part by
+							distinct abilities. The comparison is structural: abilities create choices,
+							roles, and moments for coordinated play.
+						</p>
+						<p>
+							Overcut draws a hard line around what those abilities can do.{' '}
+							<strong>They help you or your teammates. They never hinder a rival.</strong>{' '}
+							No weapons. No blue shells. No button that ruins somebody else's race.
+						</p>
+						<p>
+							The exact effects, triggers, charge rules, and loadouts are still being
+							designed. The principle is settled. The implementation is not.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="consequences section-shell" aria-labelledby="consequences-title">
+			<div>
+				<h2 id="consequences-title" class="display-heading">
+					Your mistakes still matter.
+				</h2>
+				<p class="body-copy consequences-intro">
+					Collisionless does not mean consequence-free. Overcut protects the race from
+					contact, not the driver from the clock.
+				</p>
+			</div>
+
+			<dl class="consequence-list">
+				{consequences.map(([mistake, cost]) => (
+					<div>
+						<dt>{mistake}</dt>
+						<dd>{cost}</dd>
+					</div>
+				))}
+			</dl>
+		</section>
+
+		<section class="machinery" aria-labelledby="machinery-title">
+			<div class="shell machinery-layout">
+				<div class="machinery-art">
+					<img
+						src="/images/overcut-liveries.webp"
+						alt="Concept lineup of four identical Overcut cars wearing different liveries"
+						width="1536"
+						height="1024"
+						loading="lazy"
+						decoding="async"
+					/>
+					<p>Concept art. Liveries vary; performance does not.</p>
+				</div>
+
+				<div class="machinery-copy">
+					<h2 id="machinery-title" class="display-heading">One car. A grid of identities.</h2>
+					<div class="body-copy">
+						<p>
+							Sim racing often rewards hours spent tuning a setup for one car, circuit,
+							and condition. Overcut removes that homework from the competition.
+						</p>
+						<p>
+							Every car starts on equal footing. Teams and drivers can look distinct,
+							but a faster livery does not exist. The advantage has to come from the
+							people inside the cars and the choices they make together.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="purpose" class="purpose section-shell" aria-labelledby="purpose-title">
+			<div class="purpose-question">
+				<h2 id="purpose-title">
+					Can serious racing be easier to enter and easier to return to
+					<span>without becoming less competitive?</span>
+				</h2>
+			</div>
+
+			<div class="purpose-copy body-copy">
+				<p>
+					That is the question Overcut exists to answer. It is a playable concept, not a
+					promise to become every kind of racing game.
+				</p>
+				<p>
+					It comes from wanting a game with sim racing in its bones that does not demand
+					a perfect schedule, a perfect setup, or a contact-free field just to make one
+					evening of competition worthwhile.
+				</p>
+				<p>
+					If collisionless racing, equal machinery, driver abilities, and team scoring
+					work together, the concept earns the right to keep growing. The point is to
+					prove that idea by making it playable.
+				</p>
+			</div>
+		</section>
+
+		<section class="commitments" aria-labelledby="commitments-title">
+			<div class="section-shell">
+				<h2 id="commitments-title" class="display-heading">Built in public. Honest about the build.</h2>
+
+				<div class="commitment-grid">
+					<article>
+						<h3>One programmer, one playable idea</h3>
+						<p>
+							Overcut is a solo-built concept focused on testing its central racing
+							ideas. Development progress, tradeoffs, and lessons live in the build
+							journal.
+						</p>
+					</article>
+
+					<article>
+						<h3>AI-generated concept art, clearly labeled</h3>
+						<p>
+							The project uses AI-generated art because its creator is a programmer,
+							not a visual artist. While it does, Overcut will remain free to play and
+							will not be monetized.
+						</p>
+					</article>
+
+					<article>
+						<h3>A grid more people can see themselves in</h3>
+						<p>
+							Racing has not represented everyone equally. Overcut intends to build a
+							broader cast while treating representation as work to keep doing, not a
+							box already checked.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="final-cta" aria-labelledby="follow-title">
+			<div class="section-shell final-cta-inner">
+				<div>
+					<h2 id="follow-title" class="display-heading">Follow the build, not a release countdown.</h2>
 					<p>
-						Overcut is a circuit racer. Cars never collide with one another, so a race
-						is decided by where you place your car and how well you carry speed rather
-						than by contact. Every car performs identically, which makes a lap time a
-						statement about the driver and not about the garage.
-					</p>
-					<p>
-						It is played only from inside the car. Abilities are part of it, and they
-						only ever help you or a teammate — no ability exists to set a rival back.
-						Exactly what those abilities do is still being designed, and this page is
-						not going to pretend otherwise.
-					</p>
-					<p>
-						None of that makes the game soft. Locked brakes, ruined tires and a missed
-						pit box all cost you time. They cost it because of something you did, not
-						because somebody did it to you.
+						Overcut is in development. The journal covers what changes, what fails, and
+						what the playable concept proves next.
 					</p>
 				</div>
-			</section>
-
-			<section class="py-(--spacing-section)" aria-labelledby="status">
-				<SectionLabel id="status" text="Status" />
-
-				<p class="mt-8 max-w-[62ch] text-lg leading-relaxed text-fg sm:text-xl">
-					Overcut is in development. Development writing lives at <a
-						class="text-accent-soft underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-fg"
-						href="https://caseyirvine.dev">caseyirvine.dev</a
-					>.
-				</p>
-			</section>
-		</div>
+				<a class="action action-primary" href="https://caseyirvine.dev">
+					Read the development series <span aria-hidden="true">&nearr;</span>
+				</a>
+			</div>
+		</section>
 	</main>
 
 	<SiteFooter />
 </BaseLayout>
+
+<style>
+	.concept {
+		display: grid;
+		gap: 3rem;
+	}
+
+	.concept-copy {
+		display: grid;
+		gap: 1.4rem;
+	}
+
+	.concept-copy p,
+	.abilities-content p,
+	.machinery-copy p,
+	.purpose-copy p {
+		margin: 0;
+	}
+
+	.principles {
+		border-block: 1px solid color-mix(in oklab, var(--color-paper) 18%, transparent);
+	}
+
+	.principle {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 18%, transparent);
+	}
+
+	.principle:last-child {
+		border-bottom: 0;
+	}
+
+	.principle::before {
+		position: absolute;
+		inset: 0 0 auto;
+		height: 2px;
+		background: var(--principle-color);
+		content: "";
+	}
+
+	.principle-acid {
+		--principle-color: var(--color-acid);
+	}
+
+	.principle-cyan {
+		--principle-color: var(--color-cyan);
+	}
+
+	.principle-violet {
+		--principle-color: var(--color-violet);
+	}
+
+	.principle-inner {
+		display: grid;
+		gap: 1rem;
+		align-items: center;
+		padding-block: clamp(2rem, 5vw, 3.5rem);
+	}
+
+	.principle-name {
+		margin: 0;
+		color: var(--principle-color);
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.principle h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(2.6rem, 6vw, 5rem);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 0.9;
+		text-transform: uppercase;
+	}
+
+	.principle-inner > p:last-child {
+		max-width: 34rem;
+		margin: 0;
+		color: var(--color-paper-muted);
+		font-size: 1.1rem;
+		line-height: 1.55;
+	}
+
+	.abilities {
+		position: relative;
+		isolation: isolate;
+		min-height: 50rem;
+		overflow: hidden;
+		background: var(--color-indigo);
+	}
+
+	.abilities-art {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+	}
+
+	.abilities-art img {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.abilities-art img {
+		object-fit: cover;
+		object-position: 72% center;
+	}
+
+	.abilities::after {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			linear-gradient(90deg, var(--color-indigo) 0%, rgb(27 33 64 / 94%) 48%, transparent 82%),
+			linear-gradient(0deg, var(--color-indigo) 0%, transparent 30%);
+		content: "";
+	}
+
+	.abilities-layout {
+		display: flex;
+		min-height: 50rem;
+		align-items: center;
+	}
+
+	.abilities-content {
+		max-width: 40rem;
+	}
+
+	.abilities-content .display-heading {
+		max-width: 10ch;
+	}
+
+	.abilities-content .body-copy {
+		display: grid;
+		gap: 1.4rem;
+		margin-top: 2.5rem;
+		color: var(--color-paper);
+	}
+
+	.consequences {
+		display: grid;
+		gap: 4rem;
+	}
+
+	.consequences-intro {
+		margin-top: 2rem;
+	}
+
+	.consequence-list {
+		margin: 0;
+		border-top: 1px solid color-mix(in oklab, var(--color-paper) 20%, transparent);
+	}
+
+	.consequence-list div {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 1rem;
+		padding-block: 1.25rem;
+		border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 20%, transparent);
+	}
+
+	.consequence-list dt,
+	.consequence-list dd {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 3vw, 2.2rem);
+		font-weight: 600;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.consequence-list dd {
+		color: var(--color-acid);
+		text-align: right;
+	}
+
+	.machinery {
+		padding-block: var(--spacing-section);
+		background: var(--color-paper);
+		color: var(--color-night);
+	}
+
+	.machinery-layout {
+		display: grid;
+		gap: clamp(3rem, 7vw, 6rem);
+		align-items: center;
+	}
+
+	.machinery-art {
+		margin: 0;
+	}
+
+	.machinery-art img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+	}
+
+	.machinery-art p {
+		margin: 0.75rem 0 0;
+		color: var(--color-tarmac);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.machinery-copy .body-copy {
+		display: grid;
+		gap: 1.4rem;
+		margin-top: 2.5rem;
+		color: var(--color-tarmac);
+	}
+
+	.purpose {
+		display: grid;
+		gap: clamp(3rem, 7vw, 6rem);
+	}
+
+	.purpose-question h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 6.5vw, 5.75rem);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		line-height: 0.92;
+		text-transform: uppercase;
+	}
+
+	.purpose-question span {
+		color: var(--color-acid);
+	}
+
+	.purpose-copy {
+		display: grid;
+		gap: 1.4rem;
+	}
+
+	.commitments {
+		border-block: 1px solid color-mix(in oklab, var(--color-paper) 18%, transparent);
+		background: var(--color-tarmac);
+	}
+
+	.commitments .display-heading {
+		max-width: 10ch;
+	}
+
+	.commitment-grid {
+		display: grid;
+		margin-top: clamp(3rem, 7vw, 5.5rem);
+		border-top: 1px solid color-mix(in oklab, var(--color-paper) 24%, transparent);
+	}
+
+	.commitment-grid article {
+		padding-block: 2rem;
+		border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 24%, transparent);
+	}
+
+	.commitment-grid h3 {
+		max-width: 16ch;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.commitment-grid p {
+		max-width: 34rem;
+		margin: 1rem 0 0;
+		color: color-mix(in oklab, var(--color-paper) 78%, var(--color-tarmac));
+		font-size: 1.05rem;
+		line-height: 1.6;
+	}
+
+	.final-cta {
+		position: relative;
+		overflow: hidden;
+		background: var(--color-acid);
+		color: var(--color-night);
+	}
+
+	.final-cta::after {
+		position: absolute;
+		inset: -50% -10% auto auto;
+		width: 34rem;
+		height: 34rem;
+		border: 8rem solid rgb(11 14 23 / 8%);
+		border-radius: 50%;
+		content: "";
+	}
+
+	.final-cta-inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		gap: 2.5rem;
+		align-items: end;
+	}
+
+	.final-cta .display-heading {
+		max-width: 10ch;
+	}
+
+	.final-cta p {
+		max-width: 40rem;
+		margin: 2rem 0 0;
+		font-size: 1.2rem;
+		line-height: 1.6;
+	}
+
+	.final-cta .action-primary {
+		border: 1px solid var(--color-night);
+		background: var(--color-night);
+		color: var(--color-paper);
+	}
+
+	.final-cta .action-primary:hover {
+		background: var(--color-paper);
+		color: var(--color-night);
+	}
+
+	@media (min-width: 48rem) {
+		.concept {
+			grid-template-columns: 0.95fr 1.05fr;
+		}
+
+		.principle-inner {
+			grid-template-columns: 0.55fr 1fr 1fr;
+			gap: 2rem;
+		}
+
+		.consequences {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.machinery-layout {
+			grid-template-columns: 1.05fr 0.95fr;
+		}
+
+		.purpose {
+			grid-template-columns: 1.1fr 0.9fr;
+		}
+
+		.commitment-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.commitment-grid article {
+			padding: 2.25rem;
+			border-right: 1px solid color-mix(in oklab, var(--color-paper) 24%, transparent);
+			border-bottom: 0;
+		}
+
+		.commitment-grid article:first-child {
+			padding-left: 0;
+		}
+
+		.commitment-grid article:last-child {
+			padding-right: 0;
+			border-right: 0;
+		}
+
+		.final-cta-inner {
+			grid-template-columns: 1fr auto;
+		}
+	}
+
+	@media (max-width: 47.99rem) {
+		.abilities {
+			min-height: auto;
+		}
+
+		.abilities-art {
+			position: relative;
+			height: 25rem;
+		}
+
+		.abilities::after {
+			background: linear-gradient(0deg, var(--color-indigo) 0%, transparent 45%);
+		}
+
+		.abilities-layout {
+			min-height: auto;
+			padding-top: 3rem;
+		}
+
+		.consequence-list div {
+			grid-template-columns: 1fr;
+			gap: 0.4rem;
+		}
+
+		.consequence-list dd {
+			text-align: left;
+		}
+	}
+</style>
