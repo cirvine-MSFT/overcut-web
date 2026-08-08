@@ -1,0 +1,103 @@
+---
+import Wordmark from './Wordmark.astro';
+---
+
+<header class="site-header">
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<div class="shell header-inner">
+		<a class="brand" href="#top" aria-label="Overcut, back to top">
+			<Wordmark />
+		</a>
+
+		<nav aria-label="Primary navigation">
+			<ul class="nav-list">
+				<li><a href="#concept-title">Concept</a></li>
+				<li><a href="#abilities-title">Abilities</a></li>
+				<li class="nav-purpose"><a href="#purpose-title">Purpose</a></li>
+				<li>
+					<a class="journal-link" href="https://caseyirvine.dev">
+						Journal
+						<span aria-hidden="true">&nearr;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		z-index: 50;
+		top: 0;
+		border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 16%, transparent);
+		background: var(--color-night);
+	}
+
+	.header-inner {
+		display: flex;
+		min-height: 4rem;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.25rem;
+	}
+
+	.skip-link {
+		position: fixed;
+		z-index: 100;
+		top: 0.75rem;
+		left: 0.75rem;
+		padding: 0.75rem 1rem;
+		background: var(--color-acid);
+		color: var(--color-night);
+		font-weight: 600;
+		transform: translateY(-200%);
+	}
+
+	.skip-link:focus {
+		transform: translateY(0);
+	}
+
+	.brand {
+		display: inline-flex;
+		flex: none;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	.brand:hover {
+		filter: brightness(1.2);
+	}
+
+	.nav-list {
+		display: flex;
+		align-items: center;
+		gap: clamp(0.85rem, 2vw, 1.75rem);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.nav-list a {
+		color: var(--color-paper-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	.nav-list a:hover {
+		color: var(--color-paper);
+	}
+
+	.nav-list .journal-link {
+		color: var(--color-acid);
+	}
+
+	@media (max-width: 42rem) {
+		.nav-list li:not(:last-child) {
+			display: none;
+		}
+	}
+</style>

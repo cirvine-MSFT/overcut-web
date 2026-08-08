@@ -1,141 +1,217 @@
 ---
-/**
- * The hero.
- *
- * `.hero__visual` is the drop-in point for artwork. It is a self-contained,
- * absolutely-positioned, `aria-hidden` layer sitting behind the content, so
- * replacing the CSS treatment with an `<Image />` later is a swap of this one
- * element and nothing else — the content layer does not need to move.
- *
- * Until then the treatment is deliberately typographic and abstract. There is
- * no car imagery on this site, on purpose: the only vehicle in the game today
- * is Epic's Unreal Engine template placeholder, which is scheduled for deletion
- * and is not ours to present as Overcut.
- */
+import Wordmark from './Wordmark.astro';
 ---
 
-<section
-	class="hero relative isolate flex min-h-[max(28rem,62svh)] items-center overflow-hidden border-b border-line md:min-h-[max(32rem,78svh)]"
->
-	<!-- HERO VISUAL — replace this element with artwork when it exists. -->
-	<div class="hero__visual absolute inset-0 -z-10" aria-hidden="true">
-		<div class="hero__wash absolute inset-0"></div>
-		<div class="hero__rules absolute inset-0"></div>
-		<div class="hero__cut absolute inset-0"></div>
+<section id="top" class="hero" aria-labelledby="hero-title">
+	<div class="hero-media" aria-hidden="true">
+		<img
+			src="/images/overcut-hero.webp"
+			alt=""
+			width="1536"
+			height="640"
+			fetchpriority="high"
+			decoding="async"
+		/>
 	</div>
 
-	<div class="mx-auto w-full max-w-5xl px-6 py-(--spacing-section) sm:px-8">
-		<p class="hero__eyebrow flex items-center gap-3 text-xs text-fg-muted uppercase sm:text-sm">
-			<span class="hero__tick" aria-hidden="true"></span>
-			In development
-		</p>
+	<div class="hero-shade" aria-hidden="true"></div>
 
-		<h1 class="mt-6 font-display leading-[0.82] font-bold sm:mt-8">
-			<span class="hero__wordmark block text-(length:--text-wordmark)">
-				Overcut<span class="hero__tm text-accent-soft">™</span>
-			</span>
+	<div class="shell hero-content">
+		<h1 id="hero-title">
+			<Wordmark size="hero" />
+			<span class="hero-tagline">Serious driving.<br />Shared strategy.</span>
 		</h1>
 
-		<p
-			class="mt-8 max-w-[34ch] text-xl leading-tight text-balance text-fg sm:mt-10 sm:text-3xl md:text-4xl"
-		>
-			A serious, collisionless competitive racer where precise driving wins races and
-			strategy determines who can sustain it.
+		<p class="hero-copy">
+			A collisionless competitive circuit racer with equal cars, distinct driver abilities,
+			and a team result worth fighting for.
 		</p>
+
+		<div class="hero-actions">
+			<a class="action action-primary" href="#concept-title">Meet the concept</a>
+			<a class="action action-secondary" href="https://caseyirvine.dev">
+				Follow the build <span aria-hidden="true">&nearr;</span>
+			</a>
+		</div>
+
+		<p class="hero-status"><span aria-hidden="true"></span> Playable concept in development</p>
+	</div>
+
+	<div class="hero-rail" aria-label="Core game principles">
+		<div class="shell hero-rail-inner">
+			<span>Collisionless racing</span>
+			<span>Equal-performance cars</span>
+			<span>Driver abilities</span>
+			<span>Team result</span>
+		</div>
 	</div>
 </section>
 
 <style>
 	.hero {
-		background-color: var(--color-ink);
+		position: relative;
+		isolation: isolate;
+		min-height: calc(100svh - 4rem);
+		overflow: hidden;
+		background: var(--color-indigo);
 	}
 
-	/* A single warm bloom, offset so the composition is not centred and dull. */
-	.hero__wash {
-		background:
-			radial-gradient(
-				60rem 42rem at 8% -14%,
-				color-mix(in oklab, var(--color-accent) 24%, transparent),
-				transparent 62%
-			),
-			radial-gradient(
-				52rem 36rem at 96% 112%,
-				color-mix(in oklab, var(--color-accent) 12%, transparent),
-				transparent 60%
-			),
-			linear-gradient(to bottom, var(--color-surface), var(--color-ink));
-		animation: hero-drift 34s ease-in-out infinite alternate;
+	.hero-media,
+	.hero-shade {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
 	}
 
-	/* Fine horizontal rules — timing-screen rows, not scanlines. Masked to the
-	   right of the text column so they add texture to the empty side of the
-	   composition without sitting behind the type. */
-	.hero__rules {
-		background-image: repeating-linear-gradient(
-			to bottom,
-			color-mix(in oklab, var(--color-fg) 5%, transparent) 0 1px,
-			transparent 1px 0.75rem
-		);
-		mask-image:
-			linear-gradient(to right, transparent 38%, black 78%),
-			linear-gradient(to bottom, transparent, black 22%, black 78%, transparent);
-		mask-composite: intersect;
-	}
-
-	/*
-	 * The cut. One decisive diagonal, which is the whole idea of the name.
-	 * It is masked into the top-right corner deliberately: that region is empty
-	 * at every breakpoint, so the line never crosses the wordmark or the pitch.
-	 */
-	.hero__cut {
-		background-image: linear-gradient(
-			118deg,
-			transparent calc(78% - 0.5px),
-			color-mix(in oklab, var(--color-accent) 85%, transparent) calc(78% - 0.5px),
-			color-mix(in oklab, var(--color-accent) 85%, transparent) calc(78% + 0.5px),
-			transparent calc(78% + 0.5px)
-		);
-		mask-image: radial-gradient(58% 78% at 100% 0%, black 15%, transparent 72%);
-	}
-
-	.hero__eyebrow {
-		font-family: var(--font-mono);
-		letter-spacing: 0.32em;
-	}
-
-	/* A short accent stroke anchoring the eyebrow to the left edge of the column. */
-	.hero__tick {
+	.hero-media img {
 		display: block;
-		width: 1.75rem;
-		height: 2px;
-		flex: none;
-		background-color: var(--color-accent);
+		width: 100%;
+		height: 100%;
 	}
 
-	.hero__wordmark {
-		/* Optical tracking: display type at this size needs far less
-		   letter-spacing than the body scale assumes. */
-		letter-spacing: -0.045em;
-		color: var(--color-fg);
+	.hero-media img {
+		object-fit: cover;
+		object-position: 64% center;
+		animation: hero-settle 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 	}
 
-	/* Sized and lifted by hand rather than with `align-super`, which sets the
-	   mark too low against a heavy display weight. `vertical-align` resolves
-	   against this element's own font-size, hence the large-looking value. */
-	.hero__tm {
-		font-size: 0.19em;
-		font-weight: 500;
-		letter-spacing: 0;
-		vertical-align: 2.9em;
-		margin-inline-start: 0.15em;
+	.hero-shade {
+		z-index: -1;
+		background:
+			linear-gradient(90deg, var(--color-night) 0%, rgb(11 14 23 / 92%) 32%, transparent 72%),
+			linear-gradient(0deg, var(--color-night) 0%, transparent 34%),
+			linear-gradient(180deg, rgb(11 14 23 / 35%) 0%, transparent 25%);
 	}
 
-	@keyframes hero-drift {
+	.hero-content {
+		display: flex;
+		min-height: calc(100svh - 8.4rem);
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		padding-block: clamp(4rem, 9vw, 7rem);
+	}
+
+	.hero h1 {
+		margin: 0;
+	}
+
+	.hero-tagline {
+		display: block;
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 0.86;
+		text-transform: uppercase;
+	}
+
+	.hero-tagline {
+		max-width: 10ch;
+		margin-top: 1.25rem;
+		color: var(--color-paper);
+		font-size: var(--text-hero);
+		letter-spacing: -0.025em;
+		text-wrap: balance;
+	}
+
+	.hero-copy {
+		max-width: 33rem;
+		margin: 1.75rem 0 0;
+		color: var(--color-paper);
+		font-size: clamp(1.15rem, 2vw, 1.45rem);
+		line-height: 1.5;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+
+	.hero-status {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin: 2rem 0 0;
+		color: var(--color-paper-muted);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.hero-status span {
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 50%;
+		background: var(--color-acid);
+		box-shadow: 0 0.25rem 1rem rgb(140 255 42 / 45%);
+	}
+
+	.hero-rail {
+		border-top: 1px solid color-mix(in oklab, var(--color-paper) 22%, transparent);
+		background: rgb(11 14 23 / 90%);
+	}
+
+	.hero-rail-inner {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.hero-rail span {
+		padding: 0.8rem 0.75rem;
+		border-right: 1px solid color-mix(in oklab, var(--color-paper) 16%, transparent);
+		color: var(--color-paper-muted);
+		font-family: var(--font-display);
+		font-size: 0.95rem;
+		font-weight: 600;
+		letter-spacing: 0.07em;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.hero-rail span:nth-child(even) {
+		border-right: 0;
+	}
+
+	@keyframes hero-settle {
 		from {
-			transform: translate3d(-1.5%, -1%, 0) scale(1.06);
+			filter: saturate(0.85);
+			transform: scale(1.025);
 		}
 		to {
-			transform: translate3d(1.5%, 1%, 0) scale(1.06);
+			filter: saturate(1);
+			transform: scale(1);
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.hero-rail-inner {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.hero-rail span:nth-child(even) {
+			border-right: 1px solid color-mix(in oklab, var(--color-paper) 16%, transparent);
+		}
+
+		.hero-rail span:last-child {
+			border-right: 0;
+		}
+	}
+
+	@media (max-width: 47.99rem) {
+		.hero {
+			min-height: auto;
+		}
+
+		.hero-media img {
+			object-position: 69% center;
+		}
+
+		.hero-shade {
+			background:
+				linear-gradient(90deg, rgb(11 14 23 / 97%) 0%, rgb(11 14 23 / 82%) 58%, transparent 100%),
+				linear-gradient(0deg, var(--color-night) 0%, transparent 45%);
 		}
 	}
 </style>

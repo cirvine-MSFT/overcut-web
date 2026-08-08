@@ -1,14 +1,66 @@
 ---
-const year = 2026;
+import Wordmark from './Wordmark.astro';
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-line bg-surface">
-	<div
-		class="mx-auto flex w-full max-w-5xl flex-col gap-3 px-6 py-10 text-sm text-fg-muted sm:px-8"
-	>
-		<p>
-			Overcut™ is a trademark of Casey Irvine. All rights reserved.
-		</p>
-		<p>&copy; {year} Casey Irvine.</p>
+<footer class="site-footer">
+	<div class="shell footer-grid">
+		<div>
+			<p class="footer-brand"><Wordmark size="footer" /></p>
+			<p>A playable racing concept in development.</p>
+		</div>
+
+		<div class="footer-legal">
+			<p>Overcut&trade; is a trademark of Casey Irvine. All rights reserved.</p>
+			<p>&copy; {year} Casey Irvine.</p>
+			<p>
+				VALORANT is a trademark of Riot Games. Overcut is not affiliated with Riot Games.
+			</p>
+		</div>
 	</div>
 </footer>
+
+<style>
+	.site-footer {
+		padding-block: 3rem;
+		border-top: 1px solid color-mix(in oklab, var(--color-paper) 15%, transparent);
+		background: var(--color-night);
+		color: var(--color-paper-muted);
+	}
+
+	.footer-grid {
+		display: grid;
+		gap: 2rem;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.footer-grid p {
+		margin: 0;
+	}
+
+	.footer-grid p + p {
+		margin-top: 0.4rem;
+	}
+
+	.footer-brand {
+		line-height: 1;
+	}
+
+	.footer-legal {
+		max-width: 38rem;
+	}
+
+	@media (min-width: 48rem) {
+		.footer-grid {
+			grid-template-columns: 1fr 1.4fr;
+			align-items: end;
+		}
+
+		.footer-legal {
+			justify-self: end;
+			text-align: right;
+		}
+	}
+</style>
